@@ -1,15 +1,12 @@
 from distutils.core import setup
 
-with open('README.md', 'r') as f:
-    long_description = f.read()
-
 setup(
     name='FixedFloatApi',
     packages=['fixedfloatapi'],
-    version='1.0.0',
+    version='1.0.1',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
-    long_description=long_description,
+    long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='JobiansTechie',
     author_email='jobianstechie@gmail.com',
