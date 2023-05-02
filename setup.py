@@ -1,15 +1,20 @@
 from distutils.core import setup
 
+with open('README.md', 'r') as f:
+    long_description = f.read()
+
 setup(
     name='FixedFloatApi',
     packages=['fixedfloatapi'],
-    version='0.1.0',
+    version='1.0.0',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='JobiansTechie',
     author_email='jobianstechie@gmail.com',
-    url='https://github.com/Jobians/FixedFloatApi-Python',
-    keywords = ['FixedFloat', 'Api', 'FixedFloat Python'],
+    url='https://github.com/Jobians/FixedFloatApi',
+    keywords=['FixedFloat', 'Api', 'FixedFloat Python'],
     install_requires=[
         'requests'
     ],
