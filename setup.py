@@ -1,8 +1,9 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='FixedFloatApi',
-    packages=['fixedfloatapi'],
+    packages=find_packages(),
+    include_package_data=True,
     version='1.0.1',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
