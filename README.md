@@ -1,78 +1,71 @@
-FixedFloatApi
-=============
+## Installation
 
-A Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.
+```bash
+pip install FixedFloatApi
+```
 
-Installation
-------------
+## Usage
 
-.. code-block:: bash
+```python
+from fixedfloatapi import FixedFloatApi
 
-    pip install FixedFloatApi
+# create a new API client
+api = FixedFloatApi(key='YOUR_API_KEY', secret='YOUR_API_SECRET')
 
-Usage
------
+# Get a list of supported currencies
+ccies = api.ccies()
+print(ccies)
 
-.. code-block:: python
+# Get the current price for an exchange
+price = api.price({
+    'fromCcy': 'BTC',
+    'toCcy': 'ETH',
+    'amount': 1.0,
+    'direction': 'from',
+    'type': 'fixed' # or 'float'
+})
+print(price)
 
-    from fixedfloatapi import FixedFloatApi
+# Create a new exchange order
+order = api.create({
+    'fromCcy': 'BTC',
+    'toCcy': 'ETH',
+    'amount': 1.0,
+    'direction': 'from',
+    'type': 'fixed', # or 'float'
+    'toAddress': '0x123...'
+})
+print(order)
 
-    # create a new API client
-    api = FixedFloatApi(key='YOUR_API_KEY', secret='YOUR_API_SECRET')
+# Place an order for an existing exchange
+order_status = api.order({
+    'id': '12345',
+    'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7'
+})
+print(order_status)
 
-    # Get a list of supported currencies
-    ccies = api.ccies()
-    print(ccies)
+# Request emergency assistance for an exchange
+emergency = api.emergency({
+    'id': '12345',
+    'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
+    'choice': 'EXCHANGE'
+})
+print(emergency)
 
-    # Get the current price for an exchange
-    price = api.price({
-        'fromCcy': 'BTC',
-        'toCcy': 'ETH',
-        'amount': 1.0,
-        'direction': 'from',
-        'type': 'fixed' # or 'float'
-    })
-    print(price)
+# set email address for order notifications
+set_email = api.setEmail({
+    'id': 'TESTID',
+    'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
+    'email': 'notifyme@gmail.com',
+})
+print(set_email)
 
-    # Create a new exchange order
-    order = api.create({
-        'fromCcy': 'BTC',
-        'toCcy': 'ETH',
-        'amount': 1.0,
-        'direction': 'from',
-        'type': 'fixed', # or 'float'
-        'toAddress': '0x123...'
-    })
-    print(order)
+# get a QR code for a trade
+qr_code = api.qr({
+    'id': 'TESTID',
+    'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
+})
+print(qr_code)
+```
 
-    # Place an order for an existing exchange
-    order_status = api.order({
-        'id': '12345',
-        'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7'
-    })
-    print(order_status)
-
-    # Request emergency assistance for an exchange
-    emergency = api.emergency({
-        'id': '12345',
-        'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
-        'choice': 'EXCHANGE'
-    })
-    print(emergency)
-
-    # set email address for order notifications
-    set_email = api.setEmail({
-        'id': 'TESTID',
-        'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
-        'email': 'notifyme@gmail.com',
-    })
-    print(set_email)
-
-    # get a QR code for a trade
-    qr_code = api.qr({
-        'id': 'TESTID',
-        'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
-    })
-    print(qr_code)
-
-For more information, see the `API documentation <https://fixedfloat.com/api>`_.
+For more information, see the [API documentation](https://fixedfloat.com/api).
