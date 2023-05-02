@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='FixedFloatApi',
-    packages=['FixedFloatApi'],
+    packages=['fixedfloatapi'],
     version='0.1.0',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
