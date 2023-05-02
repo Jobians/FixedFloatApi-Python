@@ -1,1 +1,1 @@
-from fixedfloatapi.FixedFloatApi import FixedFloatApi
+from .FixedFloat import FixedFloatApi
