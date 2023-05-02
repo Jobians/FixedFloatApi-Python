@@ -4,7 +4,7 @@ setup(
     name='FixedFloatApi',
     packages=find_packages(),
     include_package_data=True,
-    version='1.0.1',
+    version='1.0.2',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
     long_description=open('README.md').read(),
