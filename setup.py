@@ -4,14 +4,14 @@ setup(
     name='FixedFloatApi',
     packages=find_packages(),
     include_package_data=True,
-    version='1.0.2',
+    version='1.0.3',
     license='MIT',
     description='Python wrapper for interacting with the FixedFloat API to exchange cryptocurrencies.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author='JobiansTechie',
     author_email='jobianstechie@gmail.com',
-    url='https://github.com/Jobians/FixedFloatApi',
+    url='https://github.com/Jobians/FixedFloatApi-Python',
     keywords=['FixedFloat', 'Api', 'FixedFloat Python'],
     install_requires=[
         'requests'
