@@ -66,6 +66,19 @@ qr_code = api.qr({
     'token': 'TESTTOKENvRB90NOtr397kHY3PJ1VRy2p29HHaN7',
 })
 print(qr_code)
+
+# Make a custom API request
+method = 'some_method'
+data = {'param1': 'value1', 'param2': 'value2'}
+response = api.custom_request(method, data)
+print(response)
 ```
 
-For more information, see the [API documentation](https://fixedfloat.com/api).
+For more information, see the [API documentation](https://fixedfloat.com/api)
+
+
+## Support
+
+If you find my work helpful, you can support me by donating:
+
+[![Donate](https://img.shields.io/badge/Donate-Crypto-0070BA.svg)](https://cwallet.com/t/TE6A6KMV)
