@@ -1,6 +1,7 @@
 import json
 import hashlib
 import requests
+import hmac
 
 class FixedFloatApi:
     RESP_OK = 0
@@ -17,7 +18,7 @@ class FixedFloatApi:
             for key, value in data.items():
                 parts.append(f'{key}={value}')
             data = '&'.join(parts)
-        return hashlib.sha256(data.encode('utf-8'), self.secret.encode('utf-8')).hexdigest()
+        return hmac.new(self.secret.encode('utf-8'), data.encode('utf-8'), hashlib.sha256).hexdigest()
 
     def req(self, method, data):
         url = f'https://ff.io/api/v2/{method}'
@@ -32,11 +33,18 @@ class FixedFloatApi:
 
         response = requests.post(url, headers=headers, data=req, verify=True)
 
-        result = response.json()
-        if result['code'] == self.RESP_OK:
-            return result['data']
-        else:
+        try:
+            result = response.json()
+        except ValueError:
+            raise Exception(f'Invalid JSON response: {response.content}')
+
+        if response.status_code != 200:
+            raise Exception(f'Request failed with status {response.status_code}: {result.get("msg", "")}')
+
+        if result['code'] != self.RESP_OK:
             raise Exception(result['msg'], result['code'])
+
+        return result['data']
 
     def ccies(self):
         return self.req('ccies', {})
@@ -58,3 +66,6 @@ class FixedFloatApi:
 
     def qr(self, data):
         return self.req('qr', data)
+
+    def custom_request(self, method, data):
+        return self.req(method, data)
